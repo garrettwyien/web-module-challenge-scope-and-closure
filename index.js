@@ -28,11 +28,14 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+  For counter 2, the 'count' object exists outside of the a function and in the global scope. For counter 1, the 'count' object exists only as an object within the function of 'counterMaker'.
+
   2. Which of the two uses a closure? How can you tell?
-  
+  There is definitely a closure in counter2 as the function refers to a variable outside of its scope. 
+
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+  counter1 code could be preferable in a situation where there are multiple counters keeping track of different things that all operate in the same way. counter2 code could be useful for where there is only a single thing to keep count of that could control parameters or objects in other functions.
 */
 
 // counter1 code
@@ -62,10 +65,10 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
-}
-
+function inning(){
+    return Math.floor(Math.random() * 3);
+};
+console.log(inning());
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -81,9 +84,22 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
-}
+function finalScore(inningCB, tobeplayed){
+  let homeScore = 0;
+  let awayScore = 0;
+  var baseballgame = {
+    'Home': homeScore,
+    'Away': awayScore
+  };
+  for(let i = 0; i <= tobeplayed; i++){
+    homeScore += inningCB, 
+    awayScore += inningCB
+  }
+  return baseballgame;
+};
+
+
+console.log(finalScore(inning(), 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
