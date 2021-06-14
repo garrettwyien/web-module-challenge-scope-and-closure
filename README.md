@@ -43,6 +43,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+Closure can be noted when a Javascript function refers to an object outside of its scope oftentimes from a different function through a callback. 
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -64,8 +66,12 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+the closure exists within function() when it calls to the 'name' from the parent function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+Dan's name will remain constant. The roll could change. 
 c. What is the lexical scope of `newRoll`? 
+Local scope
 
 
 ### Task 3 - Stretch Goals
