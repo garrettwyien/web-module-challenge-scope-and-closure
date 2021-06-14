@@ -87,28 +87,37 @@ Use the finalScore function below to do the following:
 function finalScore(inningCB, tobeplayed){
   let homeScore = 0;
   let awayScore = 0;
-  var baseballgame = {
+  var baseballgamescore = {
     'Home': homeScore,
     'Away': awayScore
   };
   for(let i = 0; i <= tobeplayed; i++){
-    homeScore += inningCB, 
-    awayScore += inningCB
+    baseballgamescore.Home += inningCB()
+    baseballgamescore.Away += inningCB()
   }
-  return baseballgame;
+  return baseballgamescore;
 };
 
 
-console.log(finalScore(inning(), 9));
+console.log(finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
-}
+function getInningScore(inningCB) {
+  let homeScore = 0;
+  let awayScore = 0;
+  var inningscore = {
+    'Home': homeScore,
+    'Away': awayScore
+  };
+  inningscore.Home += inningCB();
+  inningscore.Away += inningCB();
+  return inningscore;
+};
+console.log(getInningScore(inning));
 
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -152,11 +161,16 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScoreCB, inningCB, numberofinnings) {
+  let totalgame = []
+  for(let i = 0; i <= numberofinnings - 1; i++){
+    let singleinning = getInningScore(inning)
+    totalgame.push(`Inning ${i+1}: Away ${singleinning.Away} - Home ${singleinning.Home}`)
+  }
+  return totalgame;
 }
 
-
+console.log(scoreboard(getInningScore,inning, 9));
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
